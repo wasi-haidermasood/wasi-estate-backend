@@ -23,18 +23,22 @@ const seoPublicRouter = require('./routes/seoPublic');
 
 
 
-
-
-
-
-
 const app = express();
 
 console.log('JWT_SECRET value:', process.env.JWT_SECRET);
 
 // 1) Middlewares
+const allowedOrigins = [
+  'http://localhost:8080',             // dev frontend
+  'https://wasi-estate.vercel.app/',  // production frontend
+];
+
 app.use(cors({
-  origin: 'http://localhost:8080',
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true); // allow tools like curl/Postman
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(new Error('Not allowed by CORS'), false);
+  },
   credentials: true,
 }));
 
