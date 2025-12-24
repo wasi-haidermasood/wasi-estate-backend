@@ -20,29 +20,13 @@ const sitemapRouter = require('./routes/sitemap');
 const { router: siteSettingsRouter } = require('./routes/siteSettings');
 const seoPublicRouter = require('./routes/seoPublic');
 
-
-
-
 const app = express();
 
 console.log('JWT_SECRET value:', process.env.JWT_SECRET);
 
 // 1) Middlewares
-const allowedOrigins = [
-  'http://localhost:8080',             // dev frontend
-  'https://wasi-estate.vercel.app/',  // production frontend
-];
-
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin) return callback(null, true); // allow tools like curl/Postman
-    if (allowedOrigins.includes(origin)) return callback(null, true);
-    return callback(new Error('Not allowed by CORS'), false);
-  },
-  credentials: true,
-}));
-
-app.use(express.json()); // <-- this MUST be before app.use('/api/auth', ...)
+app.use(cors()); // Allow all origins
+app.use(express.json());
 
 // 2) DB
 connectDB();
@@ -65,12 +49,9 @@ app.use('/api/posts', postsRouter);
 app.use('/api/seo', seoRouter);
 app.use('/api/services-settings', servicesSettingsRouter);
 app.use('/api/pages', pagesRouter);
-app.use('/', sitemapRouter); // serves /sitemap.xml
+app.use('/', sitemapRouter);
 app.use('/api/site-settings', siteSettingsRouter);
-app.use('/', seoPublicRouter); // handles /robots.txt and /sitemap.xml
-
-
-
+app.use('/', seoPublicRouter);
 
 // 4) Start server
 const PORT = process.env.PORT || 5000;
