@@ -1,0 +1,102 @@
+// src/data/testimonials.js
+
+const TESTIMONIALS = [
+  {
+    id: "t-1",
+    name: "Ahmed Khan",
+    role: "Property Buyer",
+    location: "DHA Phase 6, Lahore",
+    avatar: "AK",
+    rating: 5,
+    text: "Wasi Estate made my dream home a reality! They helped me find the perfect 1 kanal house in DHA and handled everything from documentation to handover. Only 1% commission and zero hidden charges. Highly recommended!",
+    results: "Dream Home Found",
+    propertyType: "Residential Purchase",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+    isVideo: false,
+    videoUrl: null,
+    featured: true, // owner-selected
+  },
+  {
+    id: "t-2",
+    name: "Fatima Malik",
+    role: "Property Seller",
+    location: "Bahria Town, Islamabad",
+    avatar: "FM",
+    rating: 5,
+    text: "Sold my property in just 3 weeks! The team was professional, transparent, and got me the best price. Their marketing strategy brought serious buyers quickly. Worth every penny of the 1% commission.",
+    results: "Sold in 3 Weeks",
+    propertyType: "Quick Sale",
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+    isVideo: false,
+    videoUrl: null,
+    featured: true,
+  },
+  {
+    id: "t-3",
+    name: "Imran Siddiqui",
+    role: "Construction Client",
+    location: "Gulberg, Lahore",
+    avatar: "IS",
+    rating: 5,
+    text: "Built my 10 marla house with Wasi Builders and couldn't be happier! Quality construction, transparent pricing, and completed on time. They handled everything from design to finishing. Excellent work!",
+    results: "Perfect Home Built",
+    propertyType: "House Construction",
+    image:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+    isVideo: true,
+    videoUrl: "#",
+    featured: true,
+  },
+  {
+    id: "t-4",
+    name: "Sarah Aziz",
+    role: "Renovation Client",
+    location: "Model Town, Lahore",
+    avatar: "SA",
+    rating: 5,
+    text: "Amazing renovation work! They transformed my 30-year-old house into a modern masterpiece. Professional team, quality materials, and completed within the promised timeline. The value of my property increased significantly!",
+    results: "Modern Transformation",
+    propertyType: "Complete Renovation",
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+    isVideo: false,
+    videoUrl: null,
+    featured: false,
+  },
+  {
+    id: "t-5",
+    name: "Ali Raza",
+    role: "Commercial Buyer",
+    location: "Main Boulevard, Gulberg",
+    avatar: "AR",
+    rating: 5,
+    text: "Purchased a commercial plaza through Wasi Estate. Their market knowledge and negotiation skills saved me lakhs! Complete legal verification and smooth transaction. Best real estate consultants in Lahore.",
+    results: "Best Deal Secured",
+    propertyType: "Commercial Purchase",
+    image:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+    isVideo: false,
+    videoUrl: null,
+    featured: false,
+  },
+  {
+    id: "t-6",
+    name: "Zainab Hassan",
+    role: "Tenant",
+    location: "E-11, Islamabad",
+    avatar: "ZH",
+    rating: 5,
+    text: "Found my perfect apartment rental through Wasi Estate. They handled all the paperwork, verified the landlord, and ensured a smooth move-in. One month rent commission was totally worth the hassle-free experience!",
+    results: "Perfect Rental Found",
+    propertyType: "Apartment Rental",
+    image:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+    isVideo: false,
+    videoUrl: null,
+    featured: false,
+  },
+];
+
+module.exports = { TESTIMONIALS };
