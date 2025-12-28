@@ -19,6 +19,7 @@ const pagesRouter = require('./routes/pages');
 const sitemapRouter = require('./routes/sitemap');
 const { router: siteSettingsRouter } = require('./routes/siteSettings');
 const seoPublicRouter = require('./routes/seoPublic');
+const monitorRouter = require('./routes/monitor');
 
 const app = express();
 
@@ -52,6 +53,7 @@ app.use('/api/pages', pagesRouter);
 app.use('/', sitemapRouter);
 app.use('/api/site-settings', siteSettingsRouter);
 app.use('/', seoPublicRouter);
+app.use('/api/monitor', monitorRouter);
 
 // 4) Start server
 const PORT = process.env.PORT || 5000;
