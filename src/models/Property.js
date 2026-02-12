@@ -1,4 +1,3 @@
-// src/models/Property.js
 const mongoose = require('mongoose');
 
 const PropertySchema = new mongoose.Schema(
@@ -16,7 +15,9 @@ const PropertySchema = new mongoose.Schema(
     beds: Number,
     baths: Number,
     area: String,               // e.g. "1 Kanal", "2000 sq.ft"
-    image: String,              // image URL
+
+    image: String,              // main/cover image URL
+    images: [String],           // gallery image URLs
 
     // SEO fields
     seoTitle: String,

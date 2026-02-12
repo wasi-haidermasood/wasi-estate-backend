@@ -11,24 +11,39 @@ const router = express.Router();
 async function ensureSeeded() {
   const count = await Property.countDocuments();
   if (count === 0) {
-    const docs = PROPERTIES.map((p) => ({
-      id: p.id,
-      title: p.title,
-      city: p.city,
-      location: p.location,
-      type: p.type,
-      transactionType: p.transactionType,
-      price: p.price,
-      beds: p.beds,
-      baths: p.baths,
-      area: p.area,
-      image: p.image,
+    const mongoose = require('mongoose');
 
-      // SEO defaults
-      seoTitle: '',
-      seoDescription: '',
-      seoImage: '',
-    }));
+const PropertySchema = new mongoose.Schema(
+  {
+    // Custom ID used by frontend (e.g. "prop-1")
+    id: String,
+
+    title: String,
+    city: String,
+    location: String,           // e.g. "DHA Phase 6"
+    type: String,               // "House", "Apartment", "Commercial", "Plot"
+    transactionType: String,    // "buy", "rent", "projects"
+    price: Number,              // PKR amount
+
+    beds: Number,
+    baths: Number,
+    area: String,               // e.g. "1 Kanal", "2000 sq.ft"
+
+    image: String,              // main/cover image URL
+    images: [String],           // gallery image URLs
+
+    // SEO fields
+    seoTitle: String,
+    seoDescription: String,
+    seoImage: String,
+
+    // NEW: long description for page body (HTML from editor)
+    descriptionHtml: String,
+  },
+  { timestamps: true }
+);
+
+module.exports = mongoose.model('Property', PropertySchema);
 
     await Property.insertMany(docs);
     console.log('✅ Seeded properties collection from data/properties.js');
@@ -150,6 +165,9 @@ router.post('/', auth, async (req, res) => {
       seoTitle,
       seoDescription,
       seoImage,
+
+      // NEW: gallery images
+      images,
     } = req.body;
 
     if (!title || !city || !location || !type || !transactionType || price == null) {
@@ -176,6 +194,7 @@ router.post('/', auth, async (req, res) => {
       baths,
       area,
       image,
+      images: Array.isArray(images) && images.length ? images : image ? [image] : [],
 
       seoTitle: seoTitle || '',
       seoDescription: seoDescription || '',
